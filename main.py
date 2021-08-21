@@ -11,20 +11,15 @@ CORS(app)
 @app.route('/get_potential_seizure_timestamps', methods=["POST"])
 def get_potential_seizure_timestamps():
     url = request.args.get('url')
-    print(url)
     file = luminance_process.download_youtube_video(url)
     lums = (luminance_process.analyse_video_luminance(file))
-    print(lums)
 
     lums_post = luminance_process.post_process_luminance(lums, 30)
     anomalies = azure_client.getAnomalies(lums_post)
-    print("Anomalies:")
-    print(anomalies)
-    # anomalies = anomalies_process.post_process_anomalies(anomalies)
+
+    anomalies = anomalies_process.post_process_anomalies(anomalies)
     changes = anomalies_process.get_changes(anomalies)
     changes = anomalies_process.get_changes_in_video_time(changes, 30)
-    print("Changes:")
-    print(changes)
     return jsonify({
         "result": changes
     })

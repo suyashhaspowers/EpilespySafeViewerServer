@@ -19,8 +19,13 @@ def download_youtube_video(url):
         return file_path + ".mp4"
 
     video = pytube.YouTube(url)
-    stream = video.streams.first()
-    stream.download('./videos/', file_name+".mp4")
+    streams = video.streams.filter(progressive=True)
+    final_stream = None
+    for stream in streams:
+        if "fps" in stream.__dict__:
+            if stream.__dict__["fps"] == 30:
+                final_stream = stream
+    final_stream.download('./videos/', file_name+".mp4")
     return file_path + ".mp4"
 
 # Use opencv and pillow to obtain luminance data on a local video 
