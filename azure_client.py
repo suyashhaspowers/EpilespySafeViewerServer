@@ -1,11 +1,12 @@
 import datetime
+import api_keys
 from azure.ai.anomalydetector import AnomalyDetectorClient
 from azure.ai.anomalydetector.models import DetectRequest, TimeSeriesPoint
 from azure.core.credentials import AzureKeyCredential
 
 def getAnomalies(lums):
-    SUBSCRIPTION_KEY = "21199d03ce704c5cb0279a09230f4d36"
-    ANOMALY_DETECTOR_ENDPOINT = "https://epilepsysafeviewermvp.cognitiveservices.azure.com/"
+    SUBSCRIPTION_KEY = api_keys.AZURE["SUBSCRIPTION_KEY"]
+    ANOMALY_DETECTOR_ENDPOINT = api_keys.AZURE["ANOMALY_DETECTOR_ENDPOINT"]
     CLIENT = AnomalyDetectorClient(AzureKeyCredential(SUBSCRIPTION_KEY), ANOMALY_DETECTOR_ENDPOINT)
 
     series = []
