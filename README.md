@@ -1,3 +1,6 @@
+## DevPost
+https://devpost.com/software/epilepsy-safe-viewer
+
 ## Inspiration
 Over 50 million people suffer from epilepsy worldwide, making it one of the most common neurological diseases. With the rise in digital adoption, people who suffer from epilepsy are at risk from online videos that may trigger seizure responses. This can have adverse health effects on the lives of epileptic individuals and inhibits their interaction with technology. Often, there are warnings on videos that may trigger seizures, however, not much effort is made to resolve the problem. Our goal is clear, to provide a solution that proactively solves the problem and increases accessibility for this target group. 
 
